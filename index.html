@@ -3,309 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devdactyl | Modern Software Development & Web Design</title>
-    <meta name="description" content="Innovative software development and web design services for modern businesses. Devdactyl helps you build stunning digital experiences.">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-    <!-- Google Fonts - Replace with your selected fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>DevDactyl</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+            text-align: center;
+        }
+
+        .text {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .letter {
+            display: inline-block;
+            position: relative;
+            transform-origin: center bottom;
+            opacity: 0;
+            transform: scale(0) translateY(50px);
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            animation-delay: var(--delay);
+        }
+
+        .letter.space {
+            width: 0.3em;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0) translateY(50px) rotate(-10deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) translateY(-20px) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .particle.triangle {
+            width: 0;
+            height: 0;
+            border-radius: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-bottom: 6px solid currentColor;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 300;
+            color: #a0aec0;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 3s forwards;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .subtitle {
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            font-weight: 400;
+            color: #718096;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 3.5s forwards;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) rotate(var(--rotation)) scale(0.3);
+            }
+        }
+
+        /* Color palette for letters */
+        .letter:nth-child(1) { color: #ff6b6b; }
+        .letter:nth-child(2) { color: #4ecdc4; }
+        .letter:nth-child(3) { color: #45b7d1; }
+        .letter:nth-child(4) { color: #96ceb4; }
+        .letter:nth-child(5) { color: #feca57; }
+        .letter:nth-child(6) { color: #ff9ff3; }
+        .letter:nth-child(7) { color: #54a0ff; }
+        .letter:nth-child(8) { color: #5f27cd; }
+        .letter:nth-child(9) { color: #00d2d3; }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+            z-index: -2;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo">
-                    <img src="assets/images/logo.svg" alt="Devdactyl" width="150" height="40">
-                </a>
-                <div class="nav-links">
-                    <a href="/" class="nav-link active">Home</a>
-                    <a href="/about.html" class="nav-link">About</a>
-                    <a href="/services.html" class="nav-link">Services</a>
-                    <a href="/portfolio.html" class="nav-link">Portfolio</a>
-                    <a href="/blog" class="nav-link">Blog</a>
-                    <a href="/contact.html" class="nav-link">Contact</a>
-                </div>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
+    <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="logo-container">
+            <div class="text" id="text"></div>
+            <div class="tagline">Software Development & Design</div>
+            <div class="subtitle">Coming Soon</div>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <!-- Hero Section with Highlight Effect -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span class="highlight">Transforming</span> ideas into
-                        <span class="highlight">exceptional</span> digital experiences
-                    </h1>
-                    <p class="hero-subtitle">
-                        We design and develop modern software solutions that help businesses thrive in the digital age.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="/contact.html" class="btn btn-primary">Get in touch</a>
-                        <a href="/portfolio.html" class="btn btn-outline">View our work</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <!-- Placeholder for hero image or animated element -->
-                    <div class="hero-shape"></div>
-                </div>
-            </div>
-        </section>
+    <script>
+        const colors = [
+            { main: '#ff6b6b', shades: ['#ff8e8e', '#ffb3b3', '#ff4757', '#ff3742'] },
+            { main: '#4ecdc4', shades: ['#6bccc8', '#88d8d3', '#2ed6c7', '#26d0ce'] },
+            { main: '#45b7d1', shades: ['#6ac4d8', '#8fd1df', '#2eadd4', '#1e9bb8'] },
+            { main: '#96ceb4', shades: ['#a6d4c1', '#b6dace', '#86c5a7', '#76bc9d'] },
+            { main: '#feca57', shades: ['#fed481', '#fedeab', '#fdc830', '#fcb900'] },
+            { main: '#ff9ff3', shades: ['#ffb3f5', '#ffc7f7', '#ff8bf0', '#ff77eb'] },
+            { main: '#54a0ff', shades: ['#74b0ff', '#94c0ff', '#3490ff', '#1e80ff'] },
+            { main: '#5f27cd', shades: ['#7c4ddb', '#9973e8', '#4834d4', '#3c29b3'] },
+            { main: '#00d2d3', shades: ['#33dbdc', '#66e4e5', '#00c9ca', '#00b8b9'] }
+        ];
 
-        <!-- Services Preview Section -->
-        <section class="services-preview" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Our <span class="highlight">Services</span></h2>
-                    <p class="section-subtitle">Comprehensive digital solutions for every business need</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <h3 class="service-title">Web Design</h3>
-                        <p class="service-description">
-                            Modern, responsive websites that captivate your audience and drive conversions.
-                        </p>
-                        <a href="/services.html#web-design" class="service-link">Learn more</a>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <h3 class="service-title">Software Development</h3>
-                        <p class="service-description">
-                            Custom software solutions built with cutting-edge technologies.
-                        </p>
-                        <a href="/services.html#software-dev" class="service-link">Learn more</a>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <h3 class="service-title">UX/UI Design</h3>
-                        <p class="service-description">
-                            User-centered design that enhances usability and engagement.
-                        </p>
-                        <a href="/services.html#ux-ui" class="service-link">Learn more</a>
-                    </div>
-                </div>
-                <div class="services-cta">
-                    <a href="/services.html" class="btn btn-secondary">Explore all services</a>
-                </div>
-            </div>
-        </section>
+        function createParticles(x, y, color) {
+            const particleContainer = document.getElementById('particles');
+            
+            // Create triangles
+            for (let i = 0; i < 6; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle triangle';
+                
+                const shade = color.shades[Math.floor(Math.random() * color.shades.length)];
+                particle.style.borderBottomColor = shade;
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                const dx = (Math.random() - 0.5) * 100;
+                const dy = (Math.random() - 0.5) * 100;
+                const rotation = Math.random() * 360;
+                
+                particle.style.setProperty('--dx', dx + 'px');
+                particle.style.setProperty('--dy', dy + 'px');
+                particle.style.setProperty('--rotation', rotation + 'deg');
+                
+                particle.style.animation = `particleFloat 0.8s ease-out forwards`;
+                particle.style.animationDelay = Math.random() * 0.2 + 's';
+                
+                particleContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 1000);
+            }
+            
+            // Create circles
+            for (let i = 0; i < 4; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.backgroundColor = '#ffffff';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                const dx = (Math.random() - 0.5) * 80;
+                const dy = (Math.random() - 0.5) * 80;
+                const rotation = Math.random() * 360;
+                
+                particle.style.setProperty('--dx', dx + 'px');
+                particle.style.setProperty('--dy', dy + 'px');
+                particle.style.setProperty('--rotation', rotation + 'deg');
+                
+                particle.style.animation = `particleFloat 0.6s ease-out forwards`;
+                particle.style.animationDelay = Math.random() * 0.1 + 's';
+                
+                particleContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 800);
+            }
+        }
 
-        <!-- About Preview Section -->
-        <section class="about-preview" id="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-content">
-                        <h2 class="section-title">Who <span class="highlight">We Are</span></h2>
-                        <p class="about-text">
-                            Devdactyl is a team of passionate designers and developers dedicated to creating exceptional digital experiences. With our expertise in cutting-edge technologies and design principles, we help businesses of all sizes transform their digital presence.
-                        </p>
-                        <p class="about-text">
-                            Founded in 2022, we've grown into a versatile team serving clients across industries worldwide.
-                        </p>
-                        <a href="/about.html" class="btn btn-outline">More about us</a>
-                    </div>
-                    <div class="about-image">
-                        <!-- Placeholder for team image or office image -->
-                        <div class="about-shape"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        function animateText() {
+            const text = document.getElementById('text');
+            const letters = 'DevDactyl';
+            
+            text.innerHTML = '';
+            
+            letters.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.className = letter === ' ' ? 'letter space' : 'letter';
+                span.textContent = letter === ' ' ? '\u00A0' : letter;
+                span.style.setProperty('--delay', `${index * 0.1}s`);
+                
+                text.appendChild(span);
+                
+                // Add particles after letter animation
+                setTimeout(() => {
+                    const rect = span.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    if (letter !== ' ') {
+                        createParticles(centerX, centerY, colors[index % colors.length]);
+                    }
+                }, (index * 100) + 400);
+            });
+        }
 
-        <!-- Portfolio Preview Section -->
-        <section class="portfolio-preview" id="portfolio">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Our <span class="highlight">Work</span></h2>
-                    <p class="section-subtitle">Recent projects we're proud of</p>
-                </div>
-                <div class="portfolio-grid">
-                    <!-- Portfolio items would go here -->
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <!-- Project image placeholder -->
-                        </div>
-                        <div class="portfolio-details">
-                            <h3 class="portfolio-title">Project Name</h3>
-                            <p class="portfolio-category">Web Design, Development</p>
-                        </div>
-                    </div>
-                    <!-- More portfolio items -->
-                </div>
-                <div class="portfolio-cta">
-                    <a href="/portfolio.html" class="btn btn-secondary">View all projects</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials" id="testimonials">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Client <span class="highlight">Testimonials</span></h2>
-                    <p class="section-subtitle">What our clients say about working with us</p>
-                </div>
-                <div class="testimonials-slider">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">
-                                "Devdactyl transformed our outdated website into a modern, user-friendly platform that has significantly increased our conversion rates. Their team was professional, responsive, and delivered beyond our expectations."
-                            </p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-image">
-                                <!-- Author image placeholder -->
-                            </div>
-                            <div class="author-info">
-                                <h4 class="author-name">George Gilsenan</h4>
-                                <p class="author-role">CEO, Diddlie Aye Eh Music</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- More testimonial cards -->
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to transform your digital presence?</h2>
-                    <p class="cta-text">
-                        Let's discuss how we can help your business thrive online.
-                    </p>
-                    <a href="/contact.html" class="btn btn-primary btn-large">Get Started</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Preview Section -->
-        <section class="blog-preview" id="blog">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Latest <span class="highlight">Insights</span></h2>
-                    <p class="section-subtitle">Thoughts and expertise from our team</p>
-                </div>
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <!-- Blog image placeholder -->
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">Web Design</span>
-                                <span class="blog-date">March 15, 2025</span>
-                            </div>
-                            <h3 class="blog-title">Top Web Design Trends in 2025</h3>
-                            <p class="blog-excerpt">
-                                Explore the latest design trends shaping the web in 2025 and how they can impact your business...
-                            </p>
-                            <a href="/blog/posts/web-design-trends-2025.html" class="blog-link">Read more</a>
-                        </div>
-                    </div>
-                    <!-- More blog cards -->
-                </div>
-                <div class="blog-cta">
-                    <a href="/blog" class="btn btn-secondary">View all articles</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <div class="footer-logo">
-                        <img src="assets/images/logo.svg" alt="Devdactyl" width="120" height="32">
-                    </div>
-                    <p class="footer-description">
-                        Modern software development and web design services for businesses that want to stand out.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <!-- LinkedIn icon -->
-                        </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <!-- Twitter icon -->
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <!-- Instagram icon -->
-                        </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <!-- GitHub icon -->
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-nav">
-                    <div class="footer-nav-column">
-                        <h3 class="footer-nav-title">Pages</h3>
-                        <ul class="footer-nav-list">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/services.html">Services</a></li>
-                            <li><a href="/portfolio.html">Portfolio</a></li>
-                            <li><a href="/blog">Blog</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-nav-column">
-                        <h3 class="footer-nav-title">Services</h3>
-                        <ul class="footer-nav-list">
-                            <li><a href="/services.html#web-design">Web Design</a></li>
-                            <li><a href="/services.html#software-dev">Software Development</a></li>
-                            <li><a href="/services.html#ux-ui">UX/UI Design</a></li>
-                            <li><a href="/services.html#mobile-dev">Mobile Development</a></li>
-                            <li><a href="/services.html#ecommerce">E-commerce Solutions</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-nav-column">
-                        <h3 class="footer-nav-title">Contact</h3>
-                        <ul class="footer-contact-list">
-                            <li>Email: <a href="mailto:hello@devdactyl.com">hello@devdactyl.tech</a></li>
-                            <li>Phone: <a href="tel:+353894807998">+1 (353) 89 4807998</a></li>
-                            <li>Address: 123 Tech Street, Wexford, Ireland</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="copyright">
-                    &copy; 2025 Devdactyl. All rights reserved.
-                </p>
-                <div class="footer-links">
-                    <a href="/privacy-policy.html">Privacy Policy</a>
-                    <a href="/terms-of-service.html">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/components/hero-effect.js"></script>
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateText, 500);
+        });
+    </script>
 </body>
 </html>
