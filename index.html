@@ -1,280 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevDactyl</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            color: #ffffff;
-        }
+  <title>Devdactyl | Digital Design & Development</title>
 
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Devdactyl is a creative digital solutions studio offering web design, development, and strategy for businesses who want bold, impactful online presence.">
+  <meta name="keywords" content="Devdactyl, Kim Hanlon, web design Ireland, digital design, web development, diver developer, Wexford, creative portfolio, dive tech developer">
+  <meta name="author" content="Devdactyl">
 
-        .logo-container {
-            position: relative;
-            text-align: center;
-        }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Devdactyl | Digital Design & Development">
+  <meta property="og:description" content="Bold, creative digital services for modern businesses and projects.">
+  <meta property="og:image" content="/og-image.jpg"> <!-- Optional -->
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:type" content="website">
 
-        .text {
-            font-size: clamp(3rem, 12vw, 8rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            position: relative;
-            margin-bottom: 2rem;
-        }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Devdactyl | Digital Design & Development">
+  <meta name="twitter:description" content="Creative, strategic digital solutions.">
+  <meta name="twitter:image" content="/og-image.jpg">
 
-        .letter {
-            display: inline-block;
-            position: relative;
-            transform-origin: center bottom;
-            opacity: 0;
-            transform: scale(0) translateY(50px);
-            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-            animation-delay: var(--delay);
-        }
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-        .letter.space {
-            width: 0.3em;
-        }
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://yourdomain.com" />
 
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0) translateY(50px) rotate(-10deg);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2) translateY(-20px) rotate(5deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0) rotate(0deg);
-            }
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Devdactyl",
+      "url": "https://yourdomain.com",
+      "creator": {
+        "@type": "Person",
+        "name": "Kim Hanlon",
+        "jobTitle": "Web Developer and Designer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wexford",
+          "addressCountry": "Ireland"
         }
+      }
+    }
+  </script>
 
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #fff;
+      font-family: sans-serif;
+      color: #1c1c1c;
+      overflow: hidden;
+    }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            opacity: 0;
-        }
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
 
-        .particle.triangle {
-            width: 0;
-            height: 0;
-            border-radius: 0;
-            border-left: 3px solid transparent;
-            border-right: 3px solid transparent;
-            border-bottom: 6px solid currentColor;
-        }
+    h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+    }
 
-        .tagline {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            font-weight: 300;
-            color: #a0aec0;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 3s forwards;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-        }
+    .blip {
+      width: 12px;
+      height: 12px;
+      background: #1c1c1c;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+      margin-top: 1em;
+    }
 
-        .subtitle {
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            font-weight: 400;
-            color: #718096;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 3.5s forwards;
-            letter-spacing: 0.02em;
-        }
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes particleFloat {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--dx), var(--dy)) rotate(var(--rotation)) scale(0.3);
-            }
-        }
-
-        /* Color palette for letters */
-        .letter:nth-child(1) { color: #ff6b6b; }
-        .letter:nth-child(2) { color: #4ecdc4; }
-        .letter:nth-child(3) { color: #45b7d1; }
-        .letter:nth-child(4) { color: #96ceb4; }
-        .letter:nth-child(5) { color: #feca57; }
-        .letter:nth-child(6) { color: #ff9ff3; }
-        .letter:nth-child(7) { color: #54a0ff; }
-        .letter:nth-child(8) { color: #5f27cd; }
-        .letter:nth-child(9) { color: #00d2d3; }
-
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
-            z-index: -2;
-        }
-    </style>
+    /* Visually hidden but crawlable SEO keywords */
+    .hidden-seo {
+      position: absolute;
+      left: -9999px;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <div class="logo-container">
-            <div class="text" id="text"></div>
-            <div class="tagline">Software Development & Design</div>
-            <div class="subtitle">Coming Soon</div>
-        </div>
-    </div>
+  <div class="wrapper">
+    <h1>Site Coming Soon</h1>
+    <div class="blip"></div>
+  </div>
 
-    <script>
-        const colors = [
-            { main: '#ff6b6b', shades: ['#ff8e8e', '#ffb3b3', '#ff4757', '#ff3742'] },
-            { main: '#4ecdc4', shades: ['#6bccc8', '#88d8d3', '#2ed6c7', '#26d0ce'] },
-            { main: '#45b7d1', shades: ['#6ac4d8', '#8fd1df', '#2eadd4', '#1e9bb8'] },
-            { main: '#96ceb4', shades: ['#a6d4c1', '#b6dace', '#86c5a7', '#76bc9d'] },
-            { main: '#feca57', shades: ['#fed481', '#fedeab', '#fdc830', '#fcb900'] },
-            { main: '#ff9ff3', shades: ['#ffb3f5', '#ffc7f7', '#ff8bf0', '#ff77eb'] },
-            { main: '#54a0ff', shades: ['#74b0ff', '#94c0ff', '#3490ff', '#1e80ff'] },
-            { main: '#5f27cd', shades: ['#7c4ddb', '#9973e8', '#4834d4', '#3c29b3'] },
-            { main: '#00d2d3', shades: ['#33dbdc', '#66e4e5', '#00c9ca', '#00b8b9'] }
-        ];
-
-        function createParticles(x, y, color) {
-            const particleContainer = document.getElementById('particles');
-            
-            // Create triangles
-            for (let i = 0; i < 6; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle triangle';
-                
-                const shade = color.shades[Math.floor(Math.random() * color.shades.length)];
-                particle.style.borderBottomColor = shade;
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                const dx = (Math.random() - 0.5) * 100;
-                const dy = (Math.random() - 0.5) * 100;
-                const rotation = Math.random() * 360;
-                
-                particle.style.setProperty('--dx', dx + 'px');
-                particle.style.setProperty('--dy', dy + 'px');
-                particle.style.setProperty('--rotation', rotation + 'deg');
-                
-                particle.style.animation = `particleFloat 0.8s ease-out forwards`;
-                particle.style.animationDelay = Math.random() * 0.2 + 's';
-                
-                particleContainer.appendChild(particle);
-                
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 1000);
-            }
-            
-            // Create circles
-            for (let i = 0; i < 4; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.backgroundColor = '#ffffff';
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                const dx = (Math.random() - 0.5) * 80;
-                const dy = (Math.random() - 0.5) * 80;
-                const rotation = Math.random() * 360;
-                
-                particle.style.setProperty('--dx', dx + 'px');
-                particle.style.setProperty('--dy', dy + 'px');
-                particle.style.setProperty('--rotation', rotation + 'deg');
-                
-                particle.style.animation = `particleFloat 0.6s ease-out forwards`;
-                particle.style.animationDelay = Math.random() * 0.1 + 's';
-                
-                particleContainer.appendChild(particle);
-                
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 800);
-            }
-        }
-
-        function animateText() {
-            const text = document.getElementById('text');
-            const letters = 'DevDactyl';
-            
-            text.innerHTML = '';
-            
-            letters.split('').forEach((letter, index) => {
-                const span = document.createElement('span');
-                span.className = letter === ' ' ? 'letter space' : 'letter';
-                span.textContent = letter === ' ' ? '\u00A0' : letter;
-                span.style.setProperty('--delay', `${index * 0.1}s`);
-                
-                text.appendChild(span);
-                
-                // Add particles after letter animation
-                setTimeout(() => {
-                    const rect = span.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-                    
-                    if (letter !== ' ') {
-                        createParticles(centerX, centerY, colors[index % colors.length]);
-                    }
-                }, (index * 100) + 400);
-            });
-        }
-
-        // Start animation when page loads
-        window.addEventListener('load', () => {
-            setTimeout(animateText, 500);
-        });
-    </script>
+  <div class="hidden-seo">
+    Kim Hanlon is a creative developer and designer at Devdactyl, specializing in digital design, front-end development, and modern websites for divers, wellness brands, and conservation projects.
+  </div>
 </body>
 </html>
