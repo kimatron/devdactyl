@@ -153,10 +153,10 @@
 
     <!-- Preload Critical Resources -->
     <link rel="preload" href="./css/main.css" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
     
     <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
     
     <!-- GSAP -->
@@ -165,20 +165,78 @@
     
     <!-- Main JavaScript -->
     <script src="./js/main.js" defer></script>
+    
+    <!-- Enhanced SVG Particle System -->
+    <script>
+        function createSVGParticles(x, y, color) {
+            const particleContainer = document.getElementById('particles');
+            if (!particleContainer) return;
+            
+            const svgShapes = [
+                // Triangle
+                `<svg viewBox="0 0 24 24" fill="${color.main}"><path d="M12 2 L22 20 L2 20 Z"/></svg>`,
+                // Circle
+                `<svg viewBox="0 0 24 24" fill="${color.main}"><circle cx="12" cy="12" r="10"/></svg>`,
+                // Diamond
+                `<svg viewBox="0 0 24 24" fill="${color.main}"><path d="M12 2 L22 12 L12 22 L2 12 Z"/></svg>`,
+                // Star
+                `<svg viewBox="0 0 24 24" fill="${color.main}"><path d="M12 2 L15 9 L22 9 L17 14 L19 21 L12 17 L5 21 L7 14 L2 9 L9 9 Z"/></svg>`,
+                // Hexagon
+                `<svg viewBox="0 0 24 24" fill="${color.main}"><path d="M17.5 3.5 L22 12 L17.5 20.5 L6.5 20.5 L2 12 L6.5 3.5 Z"/></svg>`
+            ];
+            
+            // Create SVG particles
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                const shapeIndex = Math.floor(Math.random() * svgShapes.length);
+                const shapeColor = color.shades[Math.floor(Math.random() * color.shades.length)];
+                
+                particle.className = `particle svg-${['triangle', 'circle', 'diamond', 'star', 'hexagon'][shapeIndex]}`;
+                particle.innerHTML = svgShapes[shapeIndex].replace(color.main, shapeColor);
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.zIndex = '9999';
+                
+                const dx = (Math.random() - 0.5) * 200;
+                const dy = (Math.random() - 0.5) * 200;
+                const rotation = Math.random() * 720;
+                const scale = Math.random() * 0.8 + 0.4;
+                
+                particle.style.setProperty('--dx', dx + 'px');
+                particle.style.setProperty('--dy', dy + 'px');
+                particle.style.setProperty('--rotation', rotation + 'deg');
+                particle.style.transform = `scale(${scale})`;
+                
+                particle.style.animation = `particleFloat 2s ease-out forwards`;
+                particle.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                particleContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 2500);
+            }
+        }
+        
+        // Override the original createParticles function when the page loads
+        window.addEventListener('load', () => {
+            window.createParticles = createSVGParticles;
+        });
+    </script>
 
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5EKN26V407"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5EKN26V407');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11402050037"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-11402050037');
+    </script>
 
     <!-- Google Search Console Verification (replace with your verification code) -->
-   <meta name="google-site-verification" content="gxAvOnrnYnFGBLXv7JhNCEaeJXBSD11VaHyk28sLkkg" />
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
 </head>
 
 <body>
@@ -190,11 +248,11 @@
         <div class="nav-container">
             <a href="#home" class="nav-logo" aria-label="DevDactyl home">
                 <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M8 32C10.5 29 13.5 25 17 22C19 20 21 18 23 16C25 14 26 12 27 10C28 8 29 6 31 5C33 4 35 5 36 7C37 9 36 11 34 12C32 13 30 13 28 14C26 15 24 16 23 18C22 20 22 22 23 23C24 24 25 24 26 23C27 22 27 21 26 20C25 19 24 19 23 20C22 21 22 23 23 24C24 25 26 25 28 24C30 23 32 21 33 19C34 17 34 15 33 13C32 11 30 10 28 10C26 10 24 11 22 12C20 13 18 15 16 17C14 19 12 21 10 23C8 25 7 27 7 29C7 31 8 33 10 34C12 35 14 35 16 34C18 33 20 32 22 31C24 30 26 29 28 28C30 27 32 26 34 25" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="./images/logo.png" alt="DevDactyl Logo" class="logo-image" />
                 </div>
-                <span class="nav-brand-text">DevDactyl</span>
+                <span class="nav-brand-text">
+                    <span style="color: #ff6b6b;">D</span><span style="color: #4ecdc4;">e</span><span style="color: #45b7d1;">v</span><span style="color: #96ceb4;">D</span><span style="color: #feca57;">a</span><span style="color: #ff9ff3;">c</span><span style="color: #54a0ff;">t</span><span style="color: #5f27cd;">y</span><span style="color: #00d2d3;">l</span>
+                </span>
             </a>
             
             <ul class="nav-links">
@@ -206,6 +264,10 @@
                     <a data-draw-line href="#services" aria-label="Our services">Services</a>
                     <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
                 </li>
+                <!-- <li>
+                    <a data-draw-line href="#tech" aria-label="Our technology stack">Tech Stack</a>
+                    <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+                </li> -->
                 <li>
                     <a data-draw-line href="#portfolio" aria-label="View our portfolio">Portfolio</a>
                     <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
@@ -234,6 +296,10 @@
                 <a data-draw-line-mobile href="#services">Services</a>
                 <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
             </div>
+            <!-- <div class="mobile-nav-item">
+                <a data-draw-line-mobile href="#tech">Tech Stack</a>
+                <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+            </div> -->
             <div class="mobile-nav-item">
                 <a data-draw-line-mobile href="#portfolio">Portfolio</a>
                 <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
@@ -252,12 +318,12 @@
         <section class="landing" id="home">
             <div class="logo-container">
                 <h1 class="text" id="text">DevDactyl</h1>
-                <p class="tagline">Evolving Digital Experiences</p>
-                <p class="subtitle">Where Code Meets Creativity</p>
+                <p class="tagline">Code That Evolves With Your Vision</p>
+                <p class="subtitle">Where Precision Meets Digital Innovation</p>
                 
                 <div class="cta-section">
-                    <a href="#services" class="cta-button">Explore Services</a>
-                    <a href="#contact" class="cta-button secondary">Start Project</a>
+                    <a href="#services" class="cta-button">See What We Build</a>
+                    <a href="#contact" class="cta-button secondary">Let's Create Something</a>
                 </div>
             </div>
         </section>
@@ -278,19 +344,19 @@
                         <div class="section-title-underline" aria-hidden="true">
                             <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 25C45 15 85 35 125 20C165 5 205 30 245 15C285 0 325 25 365 20C380 18 390 20 395 22" 
-                                      stroke="#d4af37" stroke-width="6" stroke-linecap="round" 
+                                      stroke="#4ecdc4" stroke-width="6" stroke-linecap="round" 
                                       stroke-dasharray="1000" stroke-dashoffset="1000"/>
                             </svg>
                         </div>
                     </h2>
                     <div class="about-content">
                         <div class="about-text">
-                            <p>Hey there! 👋 DevDactyl is where prehistoric precision meets cutting-edge innovation. We're based in the lovely seaside town of <strong>Wexford, Ireland</strong>, but our digital adventures take us worldwide.</p>
-                            <p>Think of us as the friendly neighborhood developers who happen to be obsessed with creating killer apps and websites. We're the team that gets genuinely excited about <em>clean code</em>, smooth user experiences, and that magical moment when everything just <strong>works</strong>.</p>
-                            <p>From "I have this crazy idea" to "Holy moly, this actually works better than I imagined!" – that's the journey we love taking with our clients. Ready to evolve your digital presence?</p>
+                            <p>DevDactyl is where <strong>meticulous craftsmanship meets cutting-edge technology</strong>. We're the developers who actually survived the constant evolution of web frameworks and emerged stronger. Based in Wexford, Ireland, we create digital experiences that soar above the competition.</p>
+                            <p>Our approach? We dive deep into understanding your vision, then build solutions that don't just work - they <em>perform beautifully</em>. Think of us as the team that gets genuinely excited when complex problems meet elegant code.</p>
+                            <p>From "This is impossible" to "How did you make it look so effortless?" - that's the transformation we deliver. Ready to build something extraordinary?</p>
                         </div>
                         <div class="about-visual" aria-hidden="true">
-                            <img src="about.png" alt="Creative developer workspace" class="about-image" />
+                            <img src="./images/about.png" alt="Creative developer workspace" class="about-image" />
                         </div>
                     </div>
                 </div>
@@ -309,53 +375,124 @@
                             </svg>
                         </div>
                     </h2>
-                    <p class="section-subtitle">We've got the tools, the talent, and the prehistoric precision to bring your wildest digital dreams to life.</p>
+                    <p class="section-subtitle">We don't just build software - we craft digital experiences that make your competitors wonder what they're missing.</p>
                     
                     <div class="services-grid">
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">🌐</span>
                             <h3>Web Development</h3>
-                            <p>We build websites that don't just look pretty – they perform like champs. From sleek landing pages to complex web apps that make your competitors go "How did they do that?"</p>
+                            <p>Websites and applications that don't just look stunning - they perform like champions. From sleek business sites to complex platforms that handle serious traffic without breaking a sweat.</p>
                         </article>
                         
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">📱</span>
-                            <h3>Mobile Apps</h3>
-                            <p>Native, hybrid, cross-platform – we speak all the mobile languages. Our apps are so smooth, your users will actually enjoy opening them (revolutionary, we know).</p>
+                            <h3>Mobile Development</h3>
+                            <p>Native iOS and Android apps, plus cross-platform solutions that feel native everywhere. We build mobile experiences so smooth, your users actually enjoy opening them.</p>
                         </article>
                         
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">🎨</span>
                             <h3>UI/UX Design</h3>
-                            <p>Beautiful interfaces that actually make sense? Yes, please! We create designs that are so intuitive, even your most tech-challenged uncle could navigate them.</p>
+                            <p>Interfaces that make complex things simple and beautiful things functional. We create designs so intuitive, even your most tech-resistant users navigate them like pros.</p>
                         </article>
                         
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">🛒</span>
-                            <h3>E-Commerce</h3>
-                            <p>Turn browsers into buyers with e-commerce solutions that sell while you sleep. Secure payments, smart inventory, and analytics that actually tell you useful stuff.</p>
+                            <h3>E-Commerce Solutions</h3>
+                            <p>Online stores that turn browsers into buyers while you sleep. Secure payments, smart inventory, and analytics that actually tell you something useful.</p>
                         </article>
                         
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">☁️</span>
-                            <h3>Cloud Solutions</h3>
-                            <p>Scalable, reliable, and faster than a caffeinated T-Rex. We'll get your apps running in the cloud so smoothly, you'll forget they're not on your laptop.</p>
+                            <h3>Cloud Infrastructure</h3>
+                            <p>Scalable solutions that grow with your ambitions. We migrate apps to the cloud so smoothly, you'll forget they ever lived on servers under someone's desk.</p>
                         </article>
                         
                         <article class="service-card">
                             <span class="service-icon" aria-hidden="true">🔧</span>
-                            <h3>Maintenance & Support</h3>
-                            <p>We stick around after launch because we actually care about your success. Think of us as your digital bodyguards, keeping everything secure and up-to-date.</p>
+                            <h3>Ongoing Support</h3>
+                            <p>We stick around after launch because we actually care about your success. Think of us as your digital co-pilots, keeping everything secure, updated, and thriving.</p>
                         </article>
                     </div>
                 </div>
             </section>
 
+            <!-- Technology Stack Section -->
+            <!-- <section class="section tech-stack" id="tech">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        Our Tech Arsenal
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 20C30 35 70 5 110 25C150 15 190 30 230 10C270 25 310 15 350 30C370 35 385 32 390 30" 
+                                      stroke="#96ceb4" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <p class="section-subtitle">The tools we've mastered to build solutions that don't just work today, but adapt and thrive as technology evolves.</p>
+                    
+                    <div class="tech-grid">
+                        <div class="tech-category">
+                            <div class="tech-icon">⚛️</div>
+                            <h3>Frontend Development</h3>
+                            <div class="tech-stack">
+                                <span class="tech-item">React</span>
+                                <span class="tech-item">Vue.js</span>
+                                <span class="tech-item">Angular</span>
+                                <span class="tech-item">TypeScript</span>
+                                <span class="tech-item">Next.js</span>
+                                <span class="tech-item">Svelte</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <div class="tech-icon">⚙️</div>
+                            <h3>Backend Development</h3>
+                            <div class="tech-stack">
+                                <span class="tech-item">Node.js</span>
+                                <span class="tech-item">Python</span>
+                                <span class="tech-item">PHP</span>
+                                <span class="tech-item">.NET</span>
+                                <span class="tech-item">Java</span>
+                                <span class="tech-item">Go</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <div class="tech-icon">🗃️</div>
+                            <h3>Database & Storage</h3>
+                            <div class="tech-stack">
+                                <span class="tech-item">PostgreSQL</span>
+                                <span class="tech-item">MongoDB</span>
+                                <span class="tech-item">MySQL</span>
+                                <span class="tech-item">Redis</span>
+                                <span class="tech-item">Firebase</span>
+                                <span class="tech-item">Supabase</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <div class="tech-icon">☁️</div>
+                            <h3>Cloud & DevOps</h3>
+                            <div class="tech-stack">
+                                <span class="tech-item">AWS</span>
+                                <span class="tech-item">Azure</span>
+                                <span class="tech-item">Google Cloud</span>
+                                <span class="tech-item">Docker</span>
+                                <span class="tech-item">Kubernetes</span>
+                                <span class="tech-item">Vercel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
             <!-- Portfolio Section -->
             <section class="section portfolio" id="portfolio">
                 <div class="section-container">
                     <h2 class="section-title">
-                        Recent Work
+                        Recent Projects
                         <div class="section-title-underline" aria-hidden="true">
                             <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 20C30 35 70 5 110 25C150 15 190 30 230 10C270 25 310 15 350 30C370 35 385 32 390 30" 
@@ -364,16 +501,16 @@
                             </svg>
                         </div>
                     </h2>
-                    <p class="section-subtitle">Selected projects that showcase our approach to solving complex digital challenges.</p>
+                    <p class="section-subtitle">A selection of custom solutions we've built for clients across various industries and business challenges.</p>
                     
                     <div class="portfolio-options" role="tablist" aria-label="Portfolio projects">
-                        <div class="portfolio-option active" style="--optionBackground: linear-gradient(45deg, #ff6b6b, #ff8e8e);" role="tab" aria-selected="true" tabindex="0">
+                        <div class="portfolio-option active" style="background-image: url('./images/ecommerce-project.png');" role="tab" aria-selected="true" tabindex="0">
                             <div class="portfolio-shadow" aria-hidden="true"></div>
                             <div class="portfolio-label">
                                 <div class="portfolio-icon" aria-hidden="true">🏪</div>
                                 <div class="portfolio-info">
                                     <div class="portfolio-main">E-Commerce Platform</div>
-                                    <div class="portfolio-sub">Custom marketplace with advanced configurator</div>
+                                    <div class="portfolio-sub">Custom marketplace with advanced product configurator</div>
                                     <div class="portfolio-tech-stack">
                                         <span class="portfolio-tech-item">React</span>
                                         <span class="portfolio-tech-item">Node.js</span>
@@ -383,7 +520,7 @@
                             </div>
                         </div>
                         
-                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #4ecdc4, #6bccc8);" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="portfolio-option" style="background-image: url('./images/analytics-project.jpg');" role="tab" aria-selected="false" tabindex="-1">
                             <div class="portfolio-shadow" aria-hidden="true"></div>
                             <div class="portfolio-label">
                                 <div class="portfolio-icon" aria-hidden="true">📊</div>
@@ -399,7 +536,7 @@
                             </div>
                         </div>
                         
-                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #45b7d1, #6ac4d8);" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="portfolio-option" style="background-image: url('./images/logo.png');" role="tab" aria-selected="false" tabindex="-1">
                             <div class="portfolio-shadow" aria-hidden="true"></div>
                             <div class="portfolio-label">
                                 <div class="portfolio-icon" aria-hidden="true">📱</div>
@@ -415,7 +552,7 @@
                             </div>
                         </div>
                         
-                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #feca57, #fed481);" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="portfolio-option" style="background-image: url('./images/logo.png');" role="tab" aria-selected="false" tabindex="-1">
                             <div class="portfolio-shadow" aria-hidden="true"></div>
                             <div class="portfolio-label">
                                 <div class="portfolio-icon" aria-hidden="true">🏦</div>
@@ -431,7 +568,7 @@
                             </div>
                         </div>
                         
-                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #ff9ff3, #ffb3f5);" role="tab" aria-selected="false" tabindex="-1">
+                        <div class="portfolio-option" style="background-image: url('./images/logo.png');" role="tab" aria-selected="false" tabindex="-1">
                             <div class="portfolio-shadow" aria-hidden="true"></div>
                             <div class="portfolio-label">
                                 <div class="portfolio-icon" aria-hidden="true">🎓</div>
@@ -454,23 +591,23 @@
             <section class="section process" id="process">
                 <div class="section-container">
                     <h2 class="section-title">
-                        How We Work
+                        Our Process
                         <div class="section-title-underline" aria-hidden="true">
                             <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 25C28 15 68 30 108 20C148 10 188 25 228 15C268 5 308 20 348 10C368 5 388 8 392 10" 
-                                      stroke="#d4af37" stroke-width="6" stroke-linecap="round" 
+                                      stroke="#4ecdc4" stroke-width="6" stroke-linecap="round" 
                                       stroke-dasharray="1000" stroke-dashoffset="1000"/>
                             </svg>
                         </div>
                     </h2>
-                    <p class="section-subtitle">Our proven approach to delivering exceptional digital solutions.</p>
+                    <p class="section-subtitle">Our proven methodology for delivering exceptional digital solutions on time and within budget.</p>
                     
                     <div class="process-timeline">
                         <article class="process-step">
                             <div class="process-number">1</div>
                             <div class="process-content">
                                 <h3 class="process-title">Discovery & Strategy</h3>
-                                <p class="process-description">We dig deep into your business goals, user needs, and technical requirements. This archaeological approach ensures we uncover every detail before we start building.</p>
+                                <p class="process-description">We thoroughly analyze your business requirements, user needs, and technical challenges. This comprehensive discovery phase ensures we understand every detail before development begins.</p>
                             </div>
                             <div class="process-line" aria-hidden="true"></div>
                         </article>
@@ -478,8 +615,8 @@
                         <article class="process-step">
                             <div class="process-number">2</div>
                             <div class="process-content">
-                                <h3 class="process-title">Design & Prototyping</h3>
-                                <p class="process-description">We create user experiences that feel intuitive and interfaces that look polished. Every interaction is carefully crafted and tested before development begins.</p>
+                                <h3 class="process-title">Design & Planning</h3>
+                                <p class="process-description">We create user experiences that convert and interfaces that engage. Every design decision is backed by research and tested for usability before development begins.</p>
                             </div>
                             <div class="process-line" aria-hidden="true"></div>
                         </article>
@@ -488,7 +625,7 @@
                             <div class="process-number">3</div>
                             <div class="process-content">
                                 <h3 class="process-title">Development & Testing</h3>
-                                <p class="process-description">Clean, scalable code built with modern technologies. We test rigorously across devices and scenarios to ensure everything works flawlessly from day one.</p>
+                                <p class="process-description">Clean, scalable code built with modern technologies and best practices. We conduct rigorous testing across devices and scenarios to ensure flawless performance from launch.</p>
                             </div>
                             <div class="process-line" aria-hidden="true"></div>
                         </article>
@@ -496,8 +633,8 @@
                         <article class="process-step">
                             <div class="process-number">4</div>
                             <div class="process-content">
-                                <h3 class="process-title">Launch & Evolution</h3>
-                                <p class="process-description">We deploy with confidence and stick around to help your project evolve. Performance monitoring, updates, and ongoing support are part of the journey.</p>
+                                <h3 class="process-title">Launch & Support</h3>
+                                <p class="process-description">We deploy with confidence and provide ongoing support to ensure your solution continues to perform. Regular updates, monitoring, and optimization are part of our long-term partnership.</p>
                             </div>
                         </article>
                     </div>
@@ -512,17 +649,17 @@
                         <div class="section-title-underline" aria-hidden="true">
                             <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 15C35 30 75 10 115 25C155 5 195 35 235 20C275 5 315 30 355 15C375 10 390 12 395 15" 
-                                      stroke="#feca57" stroke-width="6" stroke-linecap="round" 
+                                      stroke="#4ecdc4" stroke-width="6" stroke-linecap="round" 
                                       stroke-dasharray="1000" stroke-dashoffset="1000"/>
                             </svg>
                         </div>
                     </h2>
-                    <p class="section-subtitle">Ready to bring your ideas to life? Let's discuss your project.</p>
+                    <p class="section-subtitle">Ready to build something that makes people stop and say "how did they do that?" Let's discuss your vision.</p>
                     
                     <div class="contact-content">
                         <div class="contact-info">
-                            <h3>Let's Cook Up Something Amazing</h3>
-                            <p>Got a project brewing in your mind? We're all ears! Whether you need a simple website that sparkles or a complex app that'll make your industry jealous, let's chat about making it happen.</p>
+                            <h3>Let's Create Something Amazing</h3>
+                            <p>Have a project brewing? We provide free consultations to explore your ideas and recommend the best approach. Whether you need something simple that sparkles or complex that competitors envy, let's make it happen.</p>
                             
                             <address class="contact-details">
                                 <div class="contact-item">
@@ -539,7 +676,7 @@
                                 </div>
                                 <div class="contact-item">
                                     <span aria-hidden="true">🌐</span>
-                                    <span>Available Worldwide</span>
+                                    <span>Serving Clients Worldwide</span>
                                 </div>
                             </address>
                         </div>
@@ -554,14 +691,32 @@
                                 <input type="email" id="contact-email" class="form-input" placeholder="Your Email" required>
                             </div>
                             <div class="form-group">
-                                <label for="contact-project" class="sr-only">Project Type</label>
-                                <input type="text" id="contact-project" class="form-input" placeholder="Project Type">
+                                <label for="contact-budget" class="sr-only">Project Budget Range</label>
+                                <select id="contact-budget" class="form-input">
+                                    <option value="">Project Budget Range</option>
+                                    <option value="under-5k">Under €5,000</option>
+                                    <option value="5k-15k">€5,000 - €15,000</option>
+                                    <option value="15k-30k">€15,000 - €30,000</option>
+                                    <option value="30k-plus">€30,000+</option>
+                                    <option value="discuss">Let's Discuss</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-timeline" class="sr-only">Project Timeline</label>
+                                <select id="contact-timeline" class="form-input">
+                                    <option value="">Preferred Timeline</option>
+                                    <option value="asap">ASAP (Rush Project)</option>
+                                    <option value="1-2months">1-2 Months</option>
+                                    <option value="3-6months">3-6 Months</option>
+                                    <option value="6months-plus">6+ Months</option>
+                                    <option value="flexible">Flexible Timeline</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="contact-message" class="sr-only">Project Details</label>
-                                <textarea id="contact-message" class="form-textarea" placeholder="Tell us about your project..." required></textarea>
+                                <textarea id="contact-message" class="form-textarea" placeholder="Tell us about your evolutionary vision..." required></textarea>
                             </div>
-                            <button type="submit" class="form-button">Send Message</button>
+                            <button type="submit" class="form-button">Let's Build This</button>
                         </form>
                     </div>
                 </div>
