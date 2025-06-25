@@ -1,113 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>DevDactyl | Professional Software Development & Web Design | Wexford, Ireland</title>
+    <meta name="title" content="DevDactyl | Professional Software Development & Web Design | Wexford, Ireland">
+    <meta name="description" content="DevDactyl delivers custom web development, mobile apps, and digital solutions from Wexford, Ireland. Prehistoric precision meets modern innovation. Get your free consultation today.">
+    <meta name="keywords" content="web development, mobile app development, software development, Wexford Ireland, custom websites, e-commerce development, UI UX design, cloud solutions, DevDactyl">
+    <meta name="author" content="DevDactyl">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devdactyl.tech">
 
-  <title>Devdactyl | Digital Design & Development</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devdactyl.tech">
+    <meta property="og:title" content="DevDactyl | Professional Software Development & Web Design">
+    <meta property="og:description" content="Custom web development, mobile apps, and digital solutions from Wexford, Ireland. Prehistoric precision meets modern innovation.">
+    <meta property="og:image" content="https://devdactyl.tech/assets/devdactyl-og-image.jpg">
+    <meta property="og:site_name" content="DevDactyl">
+    <meta property="og:locale" content="en_IE">
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Devdactyl is a creative digital solutions studio offering web design, development, and strategy for businesses who want bold, impactful online presence.">
-  <meta name="keywords" content="Devdactyl, Kim Hanlon, web design Ireland, digital design, web development, diver developer, Wexford, creative portfolio, dive tech developer">
-  <meta name="author" content="Devdactyl">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://devdactyl.tech">
+    <meta property="twitter:title" content="DevDactyl | Professional Software Development & Web Design">
+    <meta property="twitter:description" content="Custom web development, mobile apps, and digital solutions from Wexford, Ireland. Prehistoric precision meets modern innovation.">
+    <meta property="twitter:image" content="https://devdactyl.tech/assets/devdactyl-og-image.jpg">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Devdactyl | Digital Design & Development">
-  <meta property="og:description" content="Bold, creative digital services for modern businesses and projects.">
-  <meta property="og:image" content="/og-image.jpg"> <!-- Optional -->
-  <meta property="og:url" content="https://yourdomain.com">
-  <meta property="og:type" content="website">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Devdactyl | Digital Design & Development">
-  <meta name="twitter:description" content="Creative, strategic digital solutions.">
-  <meta name="twitter:image" content="/og-image.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://yourdomain.com" />
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Devdactyl",
-      "url": "https://yourdomain.com",
-      "creator": {
-        "@type": "Person",
-        "name": "Kim Hanlon",
-        "jobTitle": "Web Developer and Designer",
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DevDactyl",
+        "url": "https://devdactyl.tech",
+        "logo": "https://devdactyl.tech/assets/devdactyl-logo.png",
+        "description": "Professional software development and web design company based in Wexford, Ireland",
         "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Wexford",
-          "addressCountry": "Ireland"
+            "@type": "PostalAddress",
+            "addressLocality": "Wexford",
+            "addressCountry": "IE"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+353-53-123-4567",
+            "contactType": "Customer Service",
+            "email": "kim@devdactyl.tech"
+        },
+        "sameAs": [
+            "https://github.com/devdactyl",
+            "https://linkedin.com/company/devdactyl"
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "Kim"
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "Ireland"
+        },
+        "serviceType": [
+            "Web Development",
+            "Mobile App Development", 
+            "Software Development",
+            "UI/UX Design",
+            "E-commerce Development",
+            "Cloud Solutions"
+        ]
+    }
+    </script>
+
+    <!-- Local Business Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DevDactyl",
+        "image": "https://devdactyl.tech/assets/devdactyl-logo.png",
+        "telephone": "+353-53-123-4567",
+        "email": "kim@devdactyl.tech",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Wexford",
+            "addressRegion": "Leinster", 
+            "addressCountry": "IE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "52.3369",
+            "longitude": "-6.4633"
+        },
+        "url": "https://devdactyl.tech",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "priceRange": "€€",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "12"
         }
-      }
     }
-  </script>
+    </script>
 
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: #fff;
-      font-family: sans-serif;
-      color: #1c1c1c;
-      overflow: hidden;
+    <!-- Service Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Custom Web Development",
+        "description": "Professional custom web development services including responsive websites, web applications, and e-commerce solutions",
+        "provider": {
+            "@type": "Organization",
+            "name": "DevDactyl"
+        },
+        "areaServed": "Ireland",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Development Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Web Development"
+                    }
+                },
+                {
+                    "@type": "Offer", 
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile App Development"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service", 
+                        "name": "UI/UX Design"
+                    }
+                }
+            ]
+        }
     }
+    </script>
 
-    .wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      flex-direction: column;
-    }
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./css/main.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
+    
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Main JavaScript -->
+    <script src="./js/main.js" defer></script>
 
-    h1 {
-      font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin: 0;
-    }
+    <!-- Google Analytics (replace GA_MEASUREMENT_ID with your actual ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 
-    .blip {
-      width: 12px;
-      height: 12px;
-      background: #1c1c1c;
-      border-radius: 50%;
-      animation: blink 1s infinite;
-      margin-top: 1em;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-
-    /* Visually hidden but crawlable SEO keywords */
-    .hidden-seo {
-      position: absolute;
-      left: -9999px;
-      height: 0;
-      width: 0;
-      overflow: hidden;
-    }
-  </style>
+    <!-- Google Search Console Verification (replace with your verification code) -->
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
 </head>
-<body>
-  <div class="wrapper">
-    <h1>Site Coming Soon</h1>
-    <div class="blip"></div>
-  </div>
 
-  <div class="hidden-seo">
-    Kim Hanlon is a creative developer and designer at Devdactyl, specializing in digital design, front-end development, and modern websites for divers, wellness brands, and conservation projects.
-  </div>
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="DevDactyl home">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M8 32C10.5 29 13.5 25 17 22C19 20 21 18 23 16C25 14 26 12 27 10C28 8 29 6 31 5C33 4 35 5 36 7C37 9 36 11 34 12C32 13 30 13 28 14C26 15 24 16 23 18C22 20 22 22 23 23C24 24 25 24 26 23C27 22 27 21 26 20C25 19 24 19 23 20C22 21 22 23 23 24C24 25 26 25 28 24C30 23 32 21 33 19C34 17 34 15 33 13C32 11 30 10 28 10C26 10 24 11 22 12C20 13 18 15 16 17C14 19 12 21 10 23C8 25 7 27 7 29C7 31 8 33 10 34C12 35 14 35 16 34C18 33 20 32 22 31C24 30 26 29 28 28C30 27 32 26 34 25" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="nav-brand-text">DevDactyl</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li>
+                    <a data-draw-line href="#about" aria-label="About DevDactyl">About</a>
+                    <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+                </li>
+                <li>
+                    <a data-draw-line href="#services" aria-label="Our services">Services</a>
+                    <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+                </li>
+                <li>
+                    <a data-draw-line href="#portfolio" aria-label="View our portfolio">Portfolio</a>
+                    <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+                </li>
+                <li>
+                    <a data-draw-line href="#contact" aria-label="Contact us">Contact</a>
+                    <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+                </li>
+            </ul>
+            
+            <a href="#contact" class="nav-cta">Get Started</a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-nav-item">
+                <a data-draw-line-mobile href="#about">About</a>
+                <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+            </div>
+            <div class="mobile-nav-item">
+                <a data-draw-line-mobile href="#services">Services</a>
+                <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+            </div>
+            <div class="mobile-nav-item">
+                <a data-draw-line-mobile href="#portfolio">Portfolio</a>
+                <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+            </div>
+            <div class="mobile-nav-item">
+                <a data-draw-line-mobile href="#contact">Contact</a>
+                <div data-draw-line-box class="text-draw__box" aria-hidden="true"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="particles" id="particles" aria-hidden="true"></div>
+    
+    <!-- Landing Section -->
+    <main>
+        <section class="landing" id="home">
+            <div class="logo-container">
+                <h1 class="text" id="text">DevDactyl</h1>
+                <p class="tagline">Evolving Digital Experiences</p>
+                <p class="subtitle">Where Code Meets Creativity</p>
+                
+                <div class="cta-section">
+                    <a href="#services" class="cta-button">Explore Services</a>
+                    <a href="#contact" class="cta-button secondary">Start Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLOWING CONTENT - NO STRAIGHT DIVIDERS -->
+        <div class="content-flow" id="main-content">
+            <!-- Organic floating shapes that blend sections -->
+            <div class="organic-shape shape-1" aria-hidden="true"></div>
+            <div class="organic-shape shape-2" aria-hidden="true"></div>
+            <div class="organic-shape shape-3" aria-hidden="true"></div>
+            <div class="organic-shape shape-4" aria-hidden="true"></div>
+
+            <!-- About Section -->
+            <section class="section about" id="about">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        About DevDactyl
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 25C45 15 85 35 125 20C165 5 205 30 245 15C285 0 325 25 365 20C380 18 390 20 395 22" 
+                                      stroke="#d4af37" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>Hey there! 👋 DevDactyl is where prehistoric precision meets cutting-edge innovation. We're based in the lovely seaside town of <strong>Wexford, Ireland</strong>, but our digital adventures take us worldwide.</p>
+                            <p>Think of us as the friendly neighborhood developers who happen to be obsessed with creating killer apps and websites. We're the team that gets genuinely excited about <em>clean code</em>, smooth user experiences, and that magical moment when everything just <strong>works</strong>.</p>
+                            <p>From "I have this crazy idea" to "Holy moly, this actually works better than I imagined!" – that's the journey we love taking with our clients. Ready to evolve your digital presence?</p>
+                        </div>
+                        <div class="about-visual" aria-hidden="true">
+                            <span>🦕</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="section services" id="services">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        Our Services
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 30C28 10 68 35 108 15C148 25 188 5 228 20C268 35 308 10 348 25C368 32 388 28 392 30" 
+                                      stroke="#45b7d1" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <p class="section-subtitle">We've got the tools, the talent, and the prehistoric precision to bring your wildest digital dreams to life.</p>
+                    
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">🌐</span>
+                            <h3>Web Development</h3>
+                            <p>We build websites that don't just look pretty – they perform like champs. From sleek landing pages to complex web apps that make your competitors go "How did they do that?"</p>
+                        </article>
+                        
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">📱</span>
+                            <h3>Mobile Apps</h3>
+                            <p>Native, hybrid, cross-platform – we speak all the mobile languages. Our apps are so smooth, your users will actually enjoy opening them (revolutionary, we know).</p>
+                        </article>
+                        
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">🎨</span>
+                            <h3>UI/UX Design</h3>
+                            <p>Beautiful interfaces that actually make sense? Yes, please! We create designs that are so intuitive, even your most tech-challenged uncle could navigate them.</p>
+                        </article>
+                        
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">🛒</span>
+                            <h3>E-Commerce</h3>
+                            <p>Turn browsers into buyers with e-commerce solutions that sell while you sleep. Secure payments, smart inventory, and analytics that actually tell you useful stuff.</p>
+                        </article>
+                        
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">☁️</span>
+                            <h3>Cloud Solutions</h3>
+                            <p>Scalable, reliable, and faster than a caffeinated T-Rex. We'll get your apps running in the cloud so smoothly, you'll forget they're not on your laptop.</p>
+                        </article>
+                        
+                        <article class="service-card">
+                            <span class="service-icon" aria-hidden="true">🔧</span>
+                            <h3>Maintenance & Support</h3>
+                            <p>We stick around after launch because we actually care about your success. Think of us as your digital bodyguards, keeping everything secure and up-to-date.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section portfolio" id="portfolio">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        Recent Work
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 20C30 35 70 5 110 25C150 15 190 30 230 10C270 25 310 15 350 30C370 35 385 32 390 30" 
+                                      stroke="#ff6b6b" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <p class="section-subtitle">Selected projects that showcase our approach to solving complex digital challenges.</p>
+                    
+                    <div class="portfolio-options" role="tablist" aria-label="Portfolio projects">
+                        <div class="portfolio-option active" style="--optionBackground: linear-gradient(45deg, #ff6b6b, #ff8e8e);" role="tab" aria-selected="true" tabindex="0">
+                            <div class="portfolio-shadow" aria-hidden="true"></div>
+                            <div class="portfolio-label">
+                                <div class="portfolio-icon" aria-hidden="true">🏪</div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-main">E-Commerce Platform</div>
+                                    <div class="portfolio-sub">Custom marketplace with advanced configurator</div>
+                                    <div class="portfolio-tech-stack">
+                                        <span class="portfolio-tech-item">React</span>
+                                        <span class="portfolio-tech-item">Node.js</span>
+                                        <span class="portfolio-tech-item">PostgreSQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #4ecdc4, #6bccc8);" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="portfolio-shadow" aria-hidden="true"></div>
+                            <div class="portfolio-label">
+                                <div class="portfolio-icon" aria-hidden="true">📊</div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-main">Analytics Dashboard</div>
+                                    <div class="portfolio-sub">Real-time business intelligence platform</div>
+                                    <div class="portfolio-tech-stack">
+                                        <span class="portfolio-tech-item">Vue.js</span>
+                                        <span class="portfolio-tech-item">D3.js</span>
+                                        <span class="portfolio-tech-item">Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #45b7d1, #6ac4d8);" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="portfolio-shadow" aria-hidden="true"></div>
+                            <div class="portfolio-label">
+                                <div class="portfolio-icon" aria-hidden="true">📱</div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-main">Healthcare App</div>
+                                    <div class="portfolio-sub">Cross-platform patient management system</div>
+                                    <div class="portfolio-tech-stack">
+                                        <span class="portfolio-tech-item">React Native</span>
+                                        <span class="portfolio-tech-item">GraphQL</span>
+                                        <span class="portfolio-tech-item">AWS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #feca57, #fed481);" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="portfolio-shadow" aria-hidden="true"></div>
+                            <div class="portfolio-label">
+                                <div class="portfolio-icon" aria-hidden="true">🏦</div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-main">Financial Platform</div>
+                                    <div class="portfolio-sub">Secure banking with real-time processing</div>
+                                    <div class="portfolio-tech-stack">
+                                        <span class="portfolio-tech-item">Angular</span>
+                                        <span class="portfolio-tech-item">Spring Boot</span>
+                                        <span class="portfolio-tech-item">Oracle</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-option" style="--optionBackground: linear-gradient(45deg, #ff9ff3, #ffb3f5);" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="portfolio-shadow" aria-hidden="true"></div>
+                            <div class="portfolio-label">
+                                <div class="portfolio-icon" aria-hidden="true">🎓</div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-main">Learning Platform</div>
+                                    <div class="portfolio-sub">Interactive education with progress tracking</div>
+                                    <div class="portfolio-tech-stack">
+                                        <span class="portfolio-tech-item">Next.js</span>
+                                        <span class="portfolio-tech-item">WebRTC</span>
+                                        <span class="portfolio-tech-item">Redis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Section -->
+            <section class="section process" id="process">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        How We Work
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 25C28 15 68 30 108 20C148 10 188 25 228 15C268 5 308 20 348 10C368 5 388 8 392 10" 
+                                      stroke="#d4af37" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <p class="section-subtitle">Our proven approach to delivering exceptional digital solutions.</p>
+                    
+                    <div class="process-timeline">
+                        <article class="process-step">
+                            <div class="process-number">1</div>
+                            <div class="process-content">
+                                <h3 class="process-title">Discovery & Strategy</h3>
+                                <p class="process-description">We dig deep into your business goals, user needs, and technical requirements. This archaeological approach ensures we uncover every detail before we start building.</p>
+                            </div>
+                            <div class="process-line" aria-hidden="true"></div>
+                        </article>
+                        
+                        <article class="process-step">
+                            <div class="process-number">2</div>
+                            <div class="process-content">
+                                <h3 class="process-title">Design & Prototyping</h3>
+                                <p class="process-description">We create user experiences that feel intuitive and interfaces that look polished. Every interaction is carefully crafted and tested before development begins.</p>
+                            </div>
+                            <div class="process-line" aria-hidden="true"></div>
+                        </article>
+                        
+                        <article class="process-step">
+                            <div class="process-number">3</div>
+                            <div class="process-content">
+                                <h3 class="process-title">Development & Testing</h3>
+                                <p class="process-description">Clean, scalable code built with modern technologies. We test rigorously across devices and scenarios to ensure everything works flawlessly from day one.</p>
+                            </div>
+                            <div class="process-line" aria-hidden="true"></div>
+                        </article>
+                        
+                        <article class="process-step">
+                            <div class="process-number">4</div>
+                            <div class="process-content">
+                                <h3 class="process-title">Launch & Evolution</h3>
+                                <p class="process-description">We deploy with confidence and stick around to help your project evolve. Performance monitoring, updates, and ongoing support are part of the journey.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section contact" id="contact">
+                <div class="section-container">
+                    <h2 class="section-title">
+                        Get In Touch
+                        <div class="section-title-underline" aria-hidden="true">
+                            <svg viewBox="0 0 400 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 15C35 30 75 10 115 25C155 5 195 35 235 20C275 5 315 30 355 15C375 10 390 12 395 15" 
+                                      stroke="#feca57" stroke-width="6" stroke-linecap="round" 
+                                      stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                            </svg>
+                        </div>
+                    </h2>
+                    <p class="section-subtitle">Ready to bring your ideas to life? Let's discuss your project.</p>
+                    
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <h3>Let's Cook Up Something Amazing</h3>
+                            <p>Got a project brewing in your mind? We're all ears! Whether you need a simple website that sparkles or a complex app that'll make your industry jealous, let's chat about making it happen.</p>
+                            
+                            <address class="contact-details">
+                                <div class="contact-item">
+                                    <span aria-hidden="true">📍</span>
+                                    <span>Wexford, Ireland</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span aria-hidden="true">📧</span>
+                                    <a href="mailto:kim@devdactyl.tech">kim@devdactyl.tech</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span aria-hidden="true">📞</span>
+                                    <a href="tel:+353531234567">+353 (0)53 123 4567</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span aria-hidden="true">🌐</span>
+                                    <span>Available Worldwide</span>
+                                </div>
+                            </address>
+                        </div>
+                        
+                        <form class="contact-form" id="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="contact-name" class="sr-only">Your Name</label>
+                                <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email" class="sr-only">Your Email</label>
+                                <input type="email" id="contact-email" class="form-input" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-project" class="sr-only">Project Type</label>
+                                <input type="text" id="contact-project" class="form-input" placeholder="Project Type">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message" class="sr-only">Project Details</label>
+                                <textarea id="contact-message" class="form-textarea" placeholder="Tell us about your project..." required></textarea>
+                            </div>
+                            <button type="submit" class="form-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <p>&copy; 2025 DevDactyl. All rights reserved. | Wexford, Ireland | Prehistoric precision meets modern innovation.</p>
+        </div>
+    </footer>
 </body>
 </html>
